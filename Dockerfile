@@ -10,16 +10,19 @@ RUN wget -O /tmp/nginx-${NGINX_VERSION}.tar.gz http://nginx.org/download/nginx-$
     cd /tmp && tar xzf nginx-${NGINX_VERSION}.tar.gz
 
 RUN apt-get -y update && \
-    apt-get -y install libssl-dev libpcre3 libpcre3-dev
+    apt-get -y install libssl-dev libpcre3 libpcre3-dev libperl-dev
 
 RUN cd /tmp/nginx-${NGINX_VERSION} && \
     ./configure \
     --with-http_ssl_module \
-    --with-http_v2_module && \
+    --with-http_v2_module \
+    --with-http_perl_module && \
     make && \
     make install
 
 ADD ./nginx.conf /usr/local/nginx/conf/nginx.conf
+
+ADD ./conf.d /usr/local/nginx/conf/conf.d
 
 ADD ./bootstrap.sh /opt/bootstrap.sh
 
