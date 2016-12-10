@@ -18,7 +18,7 @@ dependencies:
     - envsubst < .aws/config.template > ~/.aws/config
     - mkdir -p ~/.docker && aws s3 cp s3://internal-storage.onplatforms.net/docker/config.json ~/.docker/config.json
   override:
-    - docker build -t ${DOCKER_TAG} --build-arg APP_VERSION=${APP_VERSION} -f docker/Dockerfile .
+    - docker build -t ${DOCKER_TAG} --build-arg APP_VERSION=${APP_VERSION} -f Dockerfile .
 deployment:
   release:
     branch: master
