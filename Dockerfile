@@ -14,7 +14,12 @@ RUN apt-get -y update && \
 
 RUN cd /tmp/nginx-${NGINX_VERSION} && \
     ./configure \
-    --with-http_ssl_module
+    --with-http_ssl_module \
+    --with-http_v2_module && \
+    make && \
+    make install
+
+ADD ./nginx.conf /usr/local/nginx/conf/nginx.conf
 
 ADD ./bootstrap.sh /opt/bootstrap.sh
 
