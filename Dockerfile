@@ -1,0 +1,3 @@
+FROM sxend/ubuntu:16.04.5
+
+ARG APP_VERSION
