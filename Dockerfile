@@ -25,6 +25,8 @@ ADD ./conf/nginx.conf /usr/local/nginx/conf/nginx.conf
 
 ADD ./conf/conf.d /usr/local/nginx/conf/conf.d
 
+RUN mkdir -p /usr/local/nginx/certs && openssl dhparam -out /usr/local/nginx/certs/dhparam.pem 2048
+
 RUN wget -O /opt/certbot-auto https://dl.eff.org/certbot-auto && chmod a+x /opt/certbot-auto && /opt/certbot-auto --help
 
 ADD ./bootstrap.sh /opt/bootstrap.sh

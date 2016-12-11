@@ -8,7 +8,7 @@ server {
 
     ssl_certificate      /etc/letsencrypt/live/onplatforms.net/fullchain.pem;
     ssl_certificate_key  /etc/letsencrypt/live/onplatforms.net/privkey.pem;
-    #ssl_dhparam         /usr/local/nginx/certs/wildcard.onplatforms.net.dhp;
+    ssl_dhparam          /usr/local/nginx/certs/dhparam.pem;
 
     ssl_session_cache    shared:SSL:1m;
     ssl_session_timeout  10m;
@@ -27,7 +27,7 @@ server {
 
     ssl_certificate      /etc/letsencrypt/live/onplatforms.net/fullchain.pem;
     ssl_certificate_key  /etc/letsencrypt/live/onplatforms.net/privkey.pem;
-    #ssl_dhparam         /usr/local/nginx/certs/wildcard.onplatforms.net.dhp;
+    ssl_dhparam          /usr/local/nginx/certs/dhparam.pem;
 
     ssl_session_cache    shared:SSL:1m;
     ssl_session_timeout  10m;
