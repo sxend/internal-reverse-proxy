@@ -21,9 +21,9 @@ RUN cd /tmp/nginx-${NGINX_VERSION} && \
     make && \
     make install
 
-ADD ./nginx.conf /usr/local/nginx/conf/nginx.conf
+ADD ./conf/nginx.conf /usr/local/nginx/conf/nginx.conf
 
-ADD ./conf.d /usr/local/nginx/conf/conf.d
+ADD ./conf/conf.d /usr/local/nginx/conf/conf.d
 
 RUN wget -O /opt/certbot-auto https://dl.eff.org/certbot-auto && chmod a+x /opt/certbot-auto && /opt/certbot-auto --help
 
