@@ -7,7 +7,7 @@ prepare() {
 
   /usr/local/nginx/sbin/nginx
 
-  /opt/certbot-auto certonly -n -a webroot --webroot-path=/usr/local/nginx/html \
+  /opt/certbot-auto certonly -n --agree-tos -a webroot --webroot-path=/usr/local/nginx/html \
     --email ${MAIL} $(echo ${CERT_DOMAINS} | sed 's/\(^\| \)/ -d /g')
 
   kill $(cat /usr/local/nginx/logs/nginx.pid)

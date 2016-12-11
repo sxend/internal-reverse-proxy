@@ -10,10 +10,7 @@ RUN wget -O /tmp/nginx-${NGINX_VERSION}.tar.gz http://nginx.org/download/nginx-$
     cd /tmp && tar xzf nginx-${NGINX_VERSION}.tar.gz
 
 RUN apt-get -y update && \
-    apt-get -y install libssl-dev libpcre3 libpcre3-dev libperl-dev \
-    libexpat1-dev libpython-dev libpython-stdlib libpython2.7 libpython2.7-dev \
-    libpython2.7-minimal libpython2.7-stdlib python-minimal python-pip-whl python-pkg-resources \
-    python2.7 python2.7-dev python2.7-minimal python3-pkg-resources python3-virtualenv
+    apt-get -y install libssl-dev libpcre3 libpcre3-dev libperl-dev
 
 RUN cd /tmp/nginx-${NGINX_VERSION} && \
     ./configure \
@@ -28,6 +25,9 @@ ADD ./nginx.conf /usr/local/nginx/conf/nginx.conf
 ADD ./conf.d /usr/local/nginx/conf/conf.d
 
 RUN wget -O /opt/certbot-auto https://dl.eff.org/certbot-auto && chmod a+x /opt/certbot-auto && /opt/certbot-auto --help
+
+RUN /opt/certbot-auto certonly --dry-run -n --agree-tos -a webroot --webroot-path=/usr/local/nginx/html \
+  --email foo@example.com -d example.com
 
 ADD ./bootstrap.sh /opt/bootstrap.sh
 
