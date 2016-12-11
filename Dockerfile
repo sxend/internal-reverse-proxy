@@ -28,4 +28,6 @@ RUN wget -O /opt/certbot-auto https://dl.eff.org/certbot-auto && chmod a+x /opt/
 
 ADD ./bootstrap.sh /opt/bootstrap.sh
 
+ADD ./prepare_ssl.sh /opt/prepare_ssl.sh
+
 CMD /opt/bootstrap.sh
