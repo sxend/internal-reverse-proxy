@@ -24,6 +24,8 @@ ADD ./nginx.conf /usr/local/nginx/conf/nginx.conf
 
 ADD ./conf.d /usr/local/nginx/conf/conf.d
 
+RUN wget -O /opt/certbot-auto https://dl.eff.org/certbot-auto && chmod a+x /opt/certbot-auto && /opt/certbot-auto --help
+
 ADD ./bootstrap.sh /opt/bootstrap.sh
 
 CMD /opt/bootstrap.sh
