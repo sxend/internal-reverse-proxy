@@ -3,7 +3,7 @@
 prepare() {
   local CERT_DOMAINS="$1"
   local MAIL="$2"
-  sed -i "s/<CERT_DOMAINS>/${CERT_DOMAINS}/g" /usr/local/nginx/conf/conf.d/cert.conf.template > /usr/local/nginx/conf/conf.d/cert.conf
+  sed "s/<CERT_DOMAINS>/${CERT_DOMAINS}/g" /usr/local/nginx/conf/conf.d/cert.conf.template > /usr/local/nginx/conf/conf.d/cert.conf
 
   /usr/local/nginx/sbin/nginx
 
