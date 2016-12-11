@@ -11,7 +11,7 @@ RUN wget -O /tmp/nginx-${NGINX_VERSION}.tar.gz http://nginx.org/download/nginx-$
 
 RUN apt-get -y update && \
     apt-get -y install libssl-dev libpcre3 libpcre3-dev libperl-dev \
-    python python-dev python-virtualenv gcc dialog libssl-dev libffi-dev ca-certificates
+    python python-dev python-virtualenv gcc dialog libssl-dev libffi-dev ca-certificates libaugeas0 augeas-lenses
 
 RUN cd /tmp/nginx-${NGINX_VERSION} && \
     ./configure \
