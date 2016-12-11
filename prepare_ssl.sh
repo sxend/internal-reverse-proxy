@@ -1,5 +1,7 @@
 #!/bin/bash
 
+mkdir -p /usr/local/nginx/certs &&
+
 prepare() {
   local CERT_DOMAINS="$1"
   local MAIL="$2"
@@ -14,6 +16,8 @@ prepare() {
 }
 
 prepare "onplatforms.net www.onplatforms.net" "admin@onplatforms.net"
+
+prepare "arimit.su www.arimit.su" "admin@arimit.su"
 
 touch /usr/local/nginx/conf/conf.d/cert.conf && \
   mv /usr/local/nginx/conf/conf.d/cert.conf /usr/local/nginx/conf/conf.d/cert.conf.bak
