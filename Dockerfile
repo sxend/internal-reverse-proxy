@@ -10,7 +10,10 @@ RUN wget -O /tmp/nginx-${NGINX_VERSION}.tar.gz http://nginx.org/download/nginx-$
     cd /tmp && tar xzf nginx-${NGINX_VERSION}.tar.gz
 
 RUN apt-get -y update && \
-    apt-get -y install libssl-dev libpcre3 libpcre3-dev libperl-dev
+    apt-get -y install libssl-dev libpcre3 libpcre3-dev libperl-dev \
+    libexpat1-dev libpython-dev libpython-stdlib libpython2.7 libpython2.7-dev \
+    libpython2.7-minimal libpython2.7-stdlib python-minimal python-pip-whl python-pkg-resources \
+    python2.7 python2.7-dev python2.7-minimal python3-pkg-resources python3-virtualenv
 
 RUN cd /tmp/nginx-${NGINX_VERSION} && \
     ./configure \
