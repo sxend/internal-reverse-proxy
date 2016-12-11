@@ -6,7 +6,7 @@ server {
     listen       443 ssl http2;
     server_name  onplatforms.net;
 
-    ssl_certificate      /etc/letsencrypt/live/onplatforms.net/fullchain.pemt;
+    ssl_certificate      /etc/letsencrypt/live/onplatforms.net/fullchain.pem;
     ssl_certificate_key  /etc/letsencrypt/live/onplatforms.net/privkey.pem;
     #ssl_dhparam         /usr/local/nginx/certs/wildcard.onplatforms.net.dhp;
 
@@ -25,7 +25,7 @@ server {
     listen       443 ssl http2;
     server_name  www.onplatforms.net;
 
-    ssl_certificate      /etc/letsencrypt/live/onplatforms.net/fullchain.pemt;
+    ssl_certificate      /etc/letsencrypt/live/onplatforms.net/fullchain.pem;
     ssl_certificate_key  /etc/letsencrypt/live/onplatforms.net/privkey.pem;
     #ssl_dhparam         /usr/local/nginx/certs/wildcard.onplatforms.net.dhp;
 
