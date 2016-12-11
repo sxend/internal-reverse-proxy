@@ -26,9 +26,6 @@ ADD ./conf.d /usr/local/nginx/conf/conf.d
 
 RUN wget -O /opt/certbot-auto https://dl.eff.org/certbot-auto && chmod a+x /opt/certbot-auto && /opt/certbot-auto --help
 
-RUN /opt/certbot-auto certonly --dry-run -n --agree-tos -a webroot --webroot-path=/usr/local/nginx/html \
-  --email foo@example.com -d example.com
-
 ADD ./bootstrap.sh /opt/bootstrap.sh
 
 ADD ./prepare_ssl.sh /opt/prepare_ssl.sh
