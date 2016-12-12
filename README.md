@@ -1,11 +1,4 @@
 
 ```
-export APP_VERSION=<APP_VERSION> && \
-  sudo docker pull docker-registry.onplatforms.net/arimit.su/internal-reverse-proxy:${APP_VERSION} && \
-  sudo docker kill internal-reverse-proxy && \
-  sudo docker rm internal-reverse-proxy && \
-  sudo docker run --name=internal-reverse-proxy -d -it \
-  -p 80:80 -p 443:443 \
-  -e HOST_IP=$(ip route get 8.8.8.8 | awk '{ print $NF; exit }') \
-  docker-registry.onplatforms.net/arimit.su/internal-reverse-proxy:${APP_VERSION}
+curl -s https://s3-ap-northeast-1.amazonaws.com/public.arimit.su/scripts/deploy.sh | sh -s -- <APP_VERSION>
 ```
