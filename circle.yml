@@ -18,6 +18,8 @@ dependencies:
     - envsubst < .aws/config.template > ~/.aws/config
     - mkdir -p ~/.docker && aws s3 cp s3://internal-storage.onplatforms.net/docker/config.json ~/.docker/config.json
   override:
+    - aws s3 sync s3://internal-storage.onplatforms.net/certs/wildcard.onplatforms.net/ ./certs/
+    - aws s3 sync s3://internal-storage.arimit.su/certs/wildcard.arimit.su/ ./certs/
     - docker build -t ${DOCKER_TAG} --build-arg APP_VERSION=${APP_VERSION} .
 deployment:
   release:

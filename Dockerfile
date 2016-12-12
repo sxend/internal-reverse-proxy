@@ -10,8 +10,7 @@ RUN wget -O /tmp/nginx-${NGINX_VERSION}.tar.gz http://nginx.org/download/nginx-$
     cd /tmp && tar xzf nginx-${NGINX_VERSION}.tar.gz
 
 RUN apt-get -y update && \
-    apt-get -y install libssl-dev libpcre3 libpcre3-dev libperl-dev \
-    python python-dev python-virtualenv gcc dialog libssl-dev libffi-dev ca-certificates libaugeas0 augeas-lenses
+    apt-get -y install libssl-dev libpcre3 libpcre3-dev libperl-dev
 
 RUN cd /tmp/nginx-${NGINX_VERSION} && \
     ./configure \
@@ -25,12 +24,8 @@ ADD ./conf/nginx.conf /usr/local/nginx/conf/nginx.conf
 
 ADD ./conf/conf.d /usr/local/nginx/conf/conf.d
 
-RUN mkdir -p /usr/local/nginx/certs && openssl dhparam -out /usr/local/nginx/certs/dhparam.pem 2048
-
-RUN wget -O /opt/certbot-auto https://dl.eff.org/certbot-auto && chmod a+x /opt/certbot-auto && /opt/certbot-auto --help
+ADD ./certs /usr/local/nginx/certs
 
 ADD ./bootstrap.sh /opt/bootstrap.sh
-
-ADD ./prepare_ssl.sh /opt/prepare_ssl.sh
 
 CMD /opt/bootstrap.sh

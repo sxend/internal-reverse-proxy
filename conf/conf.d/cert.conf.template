@@ -1,7 +1,0 @@
-server {
-    listen 80;
-    server_name <CERT_DOMAINS>;
-    location ~ /.well-known {
-      allow all;
-    }
-}
