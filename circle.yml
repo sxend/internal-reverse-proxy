@@ -21,6 +21,8 @@ dependencies:
     - aws s3 sync s3://internal-storage.onplatforms.net/certs/wildcard.onplatforms.net/ ./certs/
     - aws s3 sync s3://internal-storage.arimit.su/certs/wildcard.arimit.su/ ./certs/
     - docker build -t ${DOCKER_TAG} --build-arg APP_VERSION=${APP_VERSION} .
+  post:
+    - aws s3 cp ./scripts/deploy.sh s3://public.arimit.su/scripts/deploy.sh 
 deployment:
   release:
     branch: master
