@@ -6,6 +6,9 @@ sudo docker pull docker-registry.onplatforms.net/arimit.su/internal-reverse-prox
 
 if [ "$(sudo docker ps -q --filter "NAME=internal-reverse-proxy" | wc -l)" -eq "1" ]; then
   sudo docker kill internal-reverse-proxy
+fi
+
+if [ "$(sudo docker ps -a -q --filter "NAME=internal-reverse-proxy" | wc -l)" -eq "1" ]; then
   sudo docker rm internal-reverse-proxy
 fi
 
