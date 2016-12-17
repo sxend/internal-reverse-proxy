@@ -25,6 +25,6 @@ deployment:
   release:
     branch: master
     commands:
-      - aws s3 cp ./scripts/deploy.sh s3://public.arimit.su/internal-reverse-proxy/scripts/deploy.sh
+      - aws s3 cp ./scripts/deploy.sh s3://public.arimit.su/internal/reverse-proxy/scripts/deploy.sh
       - docker push ${DOCKER_TAG}
       - sed "s/<APP_VERSION>/${APP_VERSION}/" README.md
